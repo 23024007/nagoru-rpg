@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>名護周遊RPG</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. スタート画面 -->
+    <div id="start-screen">
+        <div class="start-container">
+            <p class="sub-title">〜 名桜大学から始まる冒険 〜</p>
+            <h1 class="game-title">名護周遊RPG</h1>
+            <p class="tagline">歩いて、出会って、名護を知る。</p>
+            
+            <div class="menu-box">
+                <button id="start-virtual-btn" class="menu-btn primary">🎮 バーチャル周遊（GPSなし）</button>
+                <button id="start-real-btn" class="menu-btn secondary">📍 リアル周遊（現地GPS連動）</button>
+            </div>
+            
+            <footer class="start-footer">
+                <p>© 2026 名桜大学 RPG Project</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- 2. メインゲーム画面 -->
+    <div id="game-screen" class="hidden">
+        <header>
+            <h1>名護周遊RPG 〜名桜大学から始まる冒険〜</h1>
+            <p id="mode-badge" class="mode-badge">🎮 バーチャル周遊モード</p>
+        </header>
+
+        <main id="app">
+            <!-- 左側：エリア＆スポットマップ -->
+            <section id="map-section">
+                <h2>🗺️ 名護市エリアマップ</h2>
+                <div id="canvas-container">
+                    <canvas id="map-canvas" width="600" height="500"></canvas>
+                </div>
+                <p class="hint-text">※マップ上をドラッグで移動、ホイールで拡大縮小できます。</p>
+                <div id="node-list">
+                    <!-- スポットボタンが動的追加されます -->
+                </div>
+            </section>
+
+            <!-- 右側：スポット詳細・キャラクター会話・クイズエリア -->
+            <section id="spot-detail-section">
+                <h2 id="spot-name">エリアを選択してください</h2>
+                
+                <div id="spot-content">
+                    <p id="spot-desc">マップ上の🏰アイコンをタップして探検するエリアを選択してください。</p>
+                    
+                    <!-- 移動・アクションボタン -->
+                    <div id="spot-actions" style="display: none;">
+                        <button id="visit-btn" class="primary-btn">🚶‍♂️ この場所へ移動する</button>
+                        <hr id="bonus-hr" style="display: none;">
+                        <button id="bonus-btn" class="bonus-btn" style="display: none;">📍 【現地限定】GPSボーナスを受け取る</button>
+                    </div>
+
+                    <!-- ★ RPG風 キャラクター＆クイズ対話エリア -->
+                    <div id="quiz-box" class="quiz-container" style="display: none;">
+                        <div class="char-header">
+                            <span id="char-avatar" class="char-avatar">👤</span>
+                            <div class="char-info">
+                                <span id="char-name" class="char-name">キャラクター名</span>
+                                <span id="char-status" class="char-status">未クリア</span>
+                            </div>
+                        </div>
+
+                        <!-- キャラクターのセリフ -->
+                        <div class="dialog-box">
+                            <p id="char-message">「こんにちは！クイズに答えて名護に詳しくなろう！」</p>
+                        </div>
+
+                        <!-- 3択クイズエリア -->
+                        <div id="quiz-options-box">
+                            <p id="quiz-question" class="quiz-question">【問題】ここに問題が表示されます</p>
+                            <div id="quiz-buttons" class="quiz-buttons">
+                                <!-- JavaScriptで3択ボタンが動的に追加されます -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p id="log-message"></p>
+            </section>
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
